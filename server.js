@@ -32,7 +32,7 @@ app.use(express.json())
 */ 
 
 app.get('/', (req, res)=>{
-    db.collection('taxi-rank-info').find().toArray()
+    db.collection('quotes').find().toArray()
         .then(data =>{
             let nameList = data.map(item => item.specialName)
             console.log(nameList)
@@ -43,7 +43,7 @@ app.get('/', (req, res)=>{
 
 app.post('/api', (req, res) => {
     console.log('post success')
-    db.collection('taxi-rank-info').insertOne(
+    db.collection('quotes').insertOne(
         req.body
     )
         .then(result=>{
