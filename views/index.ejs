@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <section>
+            <h2>Texi driver name and Number plate</h2>
+            <ul class="taxi__items">
+                <% for(let i=0; i < info.length; i++) {%>
+                    <li class="item">
+                        <span><%= info[i] %></span>
+                    </li>
+                <% } %>
+            </ul>
+
+            <form action="/api" method="POST">
+                <input type="text" name="specialName">
+                <input type="submit">
+            </form>
+
+        </section>
+    </section>
+    
+</body>
+</html>
