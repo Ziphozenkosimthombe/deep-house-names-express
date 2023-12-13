@@ -31,26 +31,42 @@ app.use(express.json())
 ==============ROUTES==========
 */ 
 
-app.get('/', (req, res)=>{
-    db.collection('quotes').find().toArray()
-        .then(data =>{
-            let nameList = data.map(item => item.specialName)
-            console.log(nameList)
-            res.render('index.ejs', {info: nameList})
-        })
-        .catch(error => console.error(error))
-})
+app.get('/', async (req, res)=>{
+    try{
+        const data = await db.collection('quotes').find().sort({number: 1}).toArray()
+        // let nameList = await data.map(item => item.specialName)
+        console.log(data)
+        res.render('index.ejs', {info: data})
+    }catch(error){
+        console.log(error)
 
-app.post('/api', (req, res) => {
-    console.log('post success')
-    db.collection('quotes').insertOne(
-        req.body
-    )
-        .then(result=>{
-            console.log(result)
-            res.redirect('/')
-        })
-        .catch(error => console.error(error))
+    }
+})
+    
+app.post('/api', async (req, res) => {
+    try{
+        console.log('post success')
+        const result = await db.collection('quotes').insertOne({
+            specialName: req.body.specialName,
+            placeToDeliver: req.body.placeToDeliver,
+            numberPlate: req.body.numberPlate,
+            number: req.body.number,
+            image: req.body.image
+        }
+        )
+        console.log(result)
+        res.redirect('/')
+
+    }catch(error){
+        console.error(error)
+    }
+})
+app.put('/updateEntry', async (req, res) =>{
+    try{
+
+    }catch(error){
+        console.error(error)
+    }
 })
 
 

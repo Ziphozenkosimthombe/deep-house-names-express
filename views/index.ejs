@@ -6,24 +6,45 @@
     <title>Document</title>
 </head>
 <body>
-    <section>
-        <section>
-            <h2>Texi driver name and Number plate</h2>
-            <ul class="taxi__items">
-                <% for(let i=0; i < info.length; i++) {%>
-                    <li class="item">
-                        <span><%= info[i] %></span>
-                    </li>
-                <% } %>
-            </ul>
-
+    <section class="rows">
+        <section class="column">
+            <h2>Enter the infomation about the taxi driver and the car</h2>
             <form action="/api" method="POST">
-                <input type="text" name="specialName">
-                <input type="submit">
+                <input type="text" placeholder="specialName" name="specialName">
+                <input type="text" placeholder="placeToDeliver" name="placeToDeliver">
+                <input type="text" placeholder="numberPlate" name="numberPlate">
+                <input type="number" placeholder="number" name="number">
+                <input type="file" name="image">
+                <button type="submit">Submit New</button>
             </form>
-
+        </section>
+        <section class="column">
+            <h2>Texi driver name and Number plate</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>DriversName</th>
+                        <th>placeToDeliver</th>
+                        <th>numberPlate</th>
+                        <th>Number</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0; i < info.length; i++) {%>
+                        <tr>
+                            <td><%= info[i].specialName %></td>
+                            <td><%= info[i].placeToDeliver %></td>
+                            <td><%= info[i].numberPlate %></td>
+                            <td><%= info[i].number %></td>
+                            <!-- Use <img> tag to display the image -->
+                            <td><img src="<%= info[i].image %>" alt="Taxi Driver Image" style="max-width: 100px; max-height: 100px;"></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
         </section>
     </section>
-    
+    <script type="text/javascript" src="/public/js/main.js"></script>
 </body>
 </html>
