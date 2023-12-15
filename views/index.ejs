@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Document</title>
 </head>
 <body>
     <section class="rows">
         <section class="column">
             <h2>Enter the infomation about the taxi driver and the car</h2>
-            <form action="/api" method="POST">
+            <form action="/api" method="POST" id="taxiForm">
                 <input type="text" placeholder="specialName" name="specialName">
                 <input type="text" placeholder="placeToDeliver" name="placeToDeliver">
                 <input type="text" placeholder="numberPlate" name="numberPlate">
                 <input type="number" placeholder="number" name="number">
                 <input type="file" name="image">
                 <button type="submit">Submit New</button>
+                <button type="button" id="updateButton">UPDATE EXISTING</button>
             </form>
         </section>
-        <section class="column">
+        <section class="column__table">
             <h2>Texi driver name and Number plate</h2>
-            <table>
+            <table id="taxiTable">
                 <thead>
                     <tr>
                         <th>DriversName</th>
@@ -28,6 +31,7 @@
                         <th>numberPlate</th>
                         <th>Number</th>
                         <th>Image</th>
+                        <th>Delete & Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,12 +43,15 @@
                             <td><%= info[i].number %></td>
                             <!-- Use <img> tag to display the image -->
                             <td><img src="<%= info[i].image %>" alt="Taxi Driver Image" style="max-width: 100px; max-height: 100px;"></td>
+                            <td class="fa fa-trash"></td>
+                            <td class="fa fa-edit"></td>
+                            <td class="fa fa-check"></td>
                         </tr>
                     <% } %>
                 </tbody>
             </table>
         </section>
     </section>
-    <script type="text/javascript" src="/public/js/main.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>
