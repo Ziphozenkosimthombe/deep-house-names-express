@@ -4,8 +4,8 @@
 const express = require('express')
 const app = express()
 const homeRoutes = require('./routes/texis')
+const editRoutes = require('./routes/edit')
 const connectDb =  require('./config/database')
-const texiRoutes = require('./routes/texis')
 const PORT = 2121
 require('dotenv').config({path: './config/.env'})
 
@@ -23,7 +23,7 @@ app.use(express.json())
 ==============ROUTES==========
 */ 
 app.use('/', homeRoutes)
-
+app.use('/edit', editRoutes)
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })

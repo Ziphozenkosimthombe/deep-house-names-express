@@ -53,3 +53,8 @@ form{
     flex-direction: column;
     width: 50%;
 }
+
+/* .fa-check{
+    text-decoration: line-through;
+    color: gray;
+} */

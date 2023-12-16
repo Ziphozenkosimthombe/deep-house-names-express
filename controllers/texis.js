@@ -64,3 +64,20 @@ module.exports = {
     }
     
 }
+
+
+
+// updateCompletionStatus: async (req, res) => {
+//     try {
+//       const result = await Texi.findByIdAndUpdate(
+//         req.body.texiId,
+//         { completed: req.body.completed },
+//         { new: true }
+//       );
+//       console.log(result);
+//       res.json('Successfully updated completion status');
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).json('Error updating completion status');
+//     }
+//   },
