@@ -1,4 +1,12 @@
 document.getElementById('updateButton').addEventListener('click', updateEntry)
+// const TexiComplete = document.querySelectorAll('td.fa')
+const deleteText = document.querySelectorAll('.fa-trash')
+
+Array.from(deleteText).forEach((element)=>{
+    element.addEventListener('click', deleteEntry)
+})
+
+
 
 
 async function updateEntry(){
@@ -22,4 +30,32 @@ async function updateEntry(){
         console.error(error);
     }
 }
+
+async function deleteEntry(){
+    const sName = this.parentNode.children[0].innerText
+    const numPlate = this.parentNode.children[1].innerText
+    const place = this.parentNode.children[2].innerText
+    const number = this.parentNode.children[3].innerText
+
+    try{
+        const response = await fetch('deleteEntry', {
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              'specialName': sName,
+              'numberPlate': numPlate,
+              'place': place,
+              'number': number
+            })
+          })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+
+    }catch(err){
+        console.log(err)
+    }
+}
+
+
 

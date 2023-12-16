@@ -3,9 +3,9 @@ const Texi = require('../models/Texi')
 module.exports = {
     getTexis: async (req, res) =>{
         try{
-            const texiItems = await Texi.find()
-            // const texisLeft = await Texi.countDocuments({completed: false})
-            res.render('index.ejs', {info: texiItems})//left: itemsLeft
+            const texiItems = await Texi.find().sort({ number: 1})
+            // const itemsLeft = await Texi.countDocuments({facheck: false})
+            res.render('index.ejs', {info: texiItems})//
 
         }catch(error){
             console.error();
@@ -20,6 +20,7 @@ module.exports = {
                 numberPlate: req.body.numberPlate,
                 number: req.body.number,
                 image: req.body.image
+                // fa: false
             })
             console.log(result);
             console.log('post succcessfull')
@@ -32,6 +33,11 @@ module.exports = {
     updateEntry: async (req, res)=>{
         try{
             console.log(req.body)
+            Object.keys(req.body).forEach(key =>{
+                if (req.body[key] === null || req.body[key] === undefined || req.body[key] === '') {
+                    delete req.body[key];
+                  }
+            })
             const result = await Texi.findOneAndUpdate(
                 {specialName: req.body.specialName},
                 {
@@ -44,5 +50,17 @@ module.exports = {
         }catch(error){
             console.error(error);
         }
+    },
+    deleteEntry: async (req, res)=>{
+        try{
+            await Texi.deleteOne({
+                specialName: req.body.specialName
+            })
+            res.json('success delete')
+
+        }catch(error){
+            console.error(error);
+        }
     }
+    
 }
