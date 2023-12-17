@@ -3,9 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
     <title>Document</title>
 </head>
 <body>
-    <h1>hello world</h1>
+    <% for (let i=0; i < info.length; i++) { %>
+        <form action="/edit/<%= info[i]._id %>" method="POST">
+            <input type="text" name="numberPlate" value="<%= info[i].numberPlate %>">
+            <input type="number" name="number" value="<%= info[i].number %>">
+            <input type="text" name="placeToDeliver" value="<%= info[i].placeToDeliver %>">
+            <button type="submit">confirm</button>
+        </form>
+    <% } %>
+    
+
+    <!-- <% for (let i=0; i < info.length; i++) { %>
+        <% if (info[i]._id === texiId) { %>
+            <form action="/edit/<%= info[i]._id %>" method="POST">
+                <input type="text" name="numberPlate" value="<%= info[i].numberPlate %>">
+                <input type="number" name="number" value="<%= info[i].number %>">
+                <input type="text" name="placeToDeliver" value="<%= info[i].placeToDeliver %>">
+                <button type="submit">confirm</button>
+            </form>
+        <% } %>
+    <% } %>
+     -->
+    <!-- <section class="rows">
+        <h2>Edit the taxi information</h2>
+        <% info.forEach(el => { %>
+            <% if (el._id === texiId) { %>
+                <section class="column">
+                    <form action="/edit/<%= el._id %>" method="POST">
+                        <input type="text" name="numberPlate" value="<%= el.numberPlate %>">
+                        <input type="number" name="number" value="<%= el.number %>">
+                        <input type="text" name="placeToDeliver" value="<%= el.placeToDeliver %>">
+                        <button type="submit">confirm</button>
+                    </form>
+                </section>
+            <% } else { %>
+                <section class="column__table">
+                    <h2>Taxi driver name and Number plate</h2>
+                    <table id="taxiTable">
+                        <thead>
+                            <tr>
+                                <th>DriversName</th>
+                                <th>placeToDeliver</th>
+                                <th>numberPlate</th>
+                                <th>Number</th>
+                                <th>Image</th>
+                                <th>Delete & Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><%= el.specialName %></td>
+                                <td><%= el.placeToDeliver %></td>
+                                <td><%= el.numberPlate %></td>
+                                <td><%= el.number %></td>
+                                <td class="edit"><a href="/edit/<%= el._id %>"><i class="fa fa-edit"></i></a></td>
+                                <td class="fa fa-trash"></td>
+                                <td class="fa fa-check"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            <% } %>
+        <% }); %>
+    </section> -->
+    <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>

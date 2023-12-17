@@ -13,12 +13,12 @@
             <h2>Enter the infomation about the taxi driver and the car</h2>
             <form action="/api" method="POST" id="taxiForm">
                 <input type="text" placeholder="specialName" name="specialName">
-                <input type="text" placeholder="placeToDeliver" name="placeToDeliver">
-                <input type="text" placeholder="numberPlate" name="numberPlate">
-                <input type="number" placeholder="number" name="number">
+                <input type="text" placeholder="placeToDeliver" name="placeToDeliver" value="placeToDeliver">
+                <input type="text" placeholder="numberPlate" name="numberPlate" value="numberPlate">
+                <input type="number" placeholder="number" name="number" value="number">
                 <input type="file" name="image">
                 <button type="submit">Submit New</button>
-                <button type="button" id="updateButton">UPDATE EXISTING</button>
+                <!-- <button type="button" id="updateButton">UPDATE EXISTING</button> -->
             </form>
         </section>
         <section class="column__table">
@@ -43,11 +43,11 @@
                             <td><%= info[i].number %></td>
                             <!-- Use <img> tag to display the image -->
                             <td><img src="<%= info[i].image %>" alt="Taxi Driver Image" style="max-width: 100px; max-height: 100px;"></td>
+                            <td class="edit"><a href="/edit/<%= info[i]._id%>"><i class="fa fa-edit"></i></a></td>
                             <td class="fa fa-trash"></td>
-                            <a href="/edit" class="edit">
-                                <td class="fa fa-edit"></td>
-                            </a>
                             <td class="fa fa-check"></td>
+                            
+                            
                             <!-- <td class=' fa fa-check <%= info[i].fa === true ? 'completed' : 'not'%>'></td> -->
                         </tr>
                     <% } %>

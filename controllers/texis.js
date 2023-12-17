@@ -30,27 +30,6 @@ module.exports = {
             console.error(error);
         }
     },
-    updateEntry: async (req, res)=>{
-        try{
-            console.log(req.body)
-            Object.keys(req.body).forEach(key =>{
-                if (req.body[key] === null || req.body[key] === undefined || req.body[key] === '') {
-                    delete req.body[key];
-                  }
-            })
-            const result = await Texi.findOneAndUpdate(
-                {specialName: req.body.specialName},
-                {
-                    $set: req.body
-                },
-            )
-            console.log(result)
-            res.json('successfully')
-
-        }catch(error){
-            console.error(error);
-        }
-    },
     deleteEntry: async (req, res)=>{
         try{
             await Texi.deleteOne({
@@ -64,20 +43,3 @@ module.exports = {
     }
     
 }
-
-
-
-// updateCompletionStatus: async (req, res) => {
-//     try {
-//       const result = await Texi.findByIdAndUpdate(
-//         req.body.texiId,
-//         { completed: req.body.completed },
-//         { new: true }
-//       );
-//       console.log(result);
-//       res.json('Successfully updated completion status');
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json('Error updating completion status');
-//     }
-//   },
