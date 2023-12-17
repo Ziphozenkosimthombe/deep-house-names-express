@@ -9,12 +9,39 @@
 </head>
 <body>
     <% for (let i=0; i < info.length; i++) { %>
-        <form action="/edit/<%= info[i]._id %>" method="POST">
-            <input type="text" name="numberPlate" value="<%= info[i].numberPlate %>">
-            <input type="number" name="number" value="<%= info[i].number %>">
-            <input type="text" name="placeToDeliver" value="<%= info[i].placeToDeliver %>">
-            <button type="submit">confirm</button>
-        </form>
+        <% if (info[i]._id==texiId) { %>
+            <form action="/edit/<%= info[i]._id %>" method="POST">
+                <input type="text" name="numberPlate" value="<%= info[i].numberPlate %>">
+                <input type="number" name="number" value="<%= info[i].number %>">
+                <input type="text" name="placeToDeliver" value="<%= info[i].placeToDeliver %>">
+                <button type="submit">confirm</button>
+            </form>
+        <% } else { %> 
+            <table id="taxiTable">
+                <thead>
+                    <tr>
+                        <th>DriversName</th>
+                        <th>placeToDeliver</th>
+                        <th>numberPlate</th>
+                        <th>Number</th>
+                        <th>Image</th>
+                        <th>Delete & Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= info[i].specialName %></td>
+                        <td><%= info[i].placeToDeliver %></td>
+                        <td><%= info[i].numberPlate %></td>
+                        <td><%= info[i].number %></td>
+                        <td class="edit"><a href="/edit/<%= info[i]._id %>"><i class="fa fa-edit"></i></a></td>
+                        <td class="fa fa-trash"></td>
+                        <td class="fa fa-check"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <%} %>
+        
     <% } %>
     
 
