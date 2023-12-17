@@ -24,11 +24,12 @@ module.exports = {
                 }
             )
             console.log(result)
-            res.json('successfully')
+            // res.json('successfully')
+            res.render('edit.ejs', {info: result})
 
         }catch(error){
             console.error(error);
-            res.render('/')
+            
         }
     }
 
