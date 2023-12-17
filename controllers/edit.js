@@ -14,17 +14,21 @@ module.exports = {
                     delete req.body[key];
                   }
             })
-            const result = await Texi.findOneAndUpdate(
-                {specialName: req.body.specialName},
+            const id = req.params.id
+            const result = await Texi.findByIdAndUpdate(
+                id,
                 {
-                    $set: req.body
-                },
+                    placeToDeliver: req.body.placeToDeliver,
+                    numberPlate: req.body.numberPlate,
+                    number: req.body.number
+                }
             )
             console.log(result)
             res.json('successfully')
 
         }catch(error){
             console.error(error);
+            res.render('/')
         }
     }
 

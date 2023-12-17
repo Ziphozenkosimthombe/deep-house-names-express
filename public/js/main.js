@@ -3,29 +3,6 @@ document.getElementById('updateButton').addEventListener('click', updateEntry)
 const deleteText = document.querySelectorAll('.fa-trash')
 const checkText = document.querySelectorAll('.completed')
 
-// document.addEventListener('DOMContentLoaded', ()=>{
-//     const texiRows = document.querySelectorAll('.texi-row')
-//     texiRows.forEach(row =>{
-//         const completed = row.getAttribute('data-completed') === 'true';
-        
-//         if (completed){
-//             row.style.textDecoration = 'line-through';
-//         }
-//         const faCheckIcon = row.querySelector('.fa-check');
-//         if (faCheckIcon){
-//             faCheckIcon.addEventListener('click', () => {
-//                 // Toggle completion status on click
-//                 const newCompleted = !completed;
-        
-//                 // Update the visual style
-//                 row.style.textDecoration = newCompleted ? 'line-through' : 'none';
-        
-//                 // Send an AJAX request to update the completion status in the database
-//                 updateCompletionStatus(info[i]._id, newCompleted);
-//               });
-//         }
-//     })
-// })
 
 Array.from(deleteText).forEach((element)=>{
     element.addEventListener('click', deleteEntry)
@@ -36,11 +13,9 @@ Array.from(checkText).forEach((element)=>{
 })
 
 
-
-
 async function updateEntry(){
     try{
-        const res = await fetch('updateEntry', {
+        const res = await fetch('/:id', {
             method: 'put',
             headers: {'content-Type': 'application/json'},
             body: JSON.stringify({
@@ -87,6 +62,7 @@ async function deleteEntry(){
     }
 }
 
+// not yet working  i am still working on the markComplete
 async function markComplete(){
     const row = this.parentNode
     const sName = row.children[0].innerText
@@ -121,19 +97,3 @@ async function markComplete(){
 }
 
 
-// async function updateCompletionStatus(texiId, completed) {
-//     try {
-//       const response = await fetch('/updateCompletionStatus', {
-//         method: 'put',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({
-//           texiId,
-//           completed,
-//         }),
-//       });
-//       const data = await response.json();
-//       console.log(data);
-//     } catch (error) {
-//       console.error(error);
-//     }
-// }
