@@ -32,9 +32,10 @@ module.exports = {
     },
     deleteEntry: async (req, res)=>{
         try{
-            await Texi.deleteOne({
+            await Texi.findOneAndDelete({
                 specialName: req.body.specialName
             })
+            console.log('deleted')
             res.json('success delete')
 
         }catch(error){

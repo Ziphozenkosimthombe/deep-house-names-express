@@ -1,5 +1,5 @@
 {
-  "name": "deep-house-names-express",
+  "name": "texi-indusry-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.ejs",
@@ -8,7 +8,7 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "author": "100Devs by zipho",
+  "author": "zipho mthombe",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

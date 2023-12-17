@@ -35,6 +35,8 @@ async function updateEntry(){
     }
 }
 
+
+
 async function deleteEntry(){
     const row = this.parentNode
     const sName = row.children[0].innerText
@@ -43,7 +45,7 @@ async function deleteEntry(){
     const number = row.children[3].innerText
 
     try{
-        const response = await fetch('deleteEntry', {
+        const response = await fetch('index/deleteEntry', {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

@@ -14,10 +14,9 @@
                 <input type="text" name="numberPlate" value="<%= info[i].numberPlate %>">
                 <input type="number" name="number" value="<%= info[i].number %>">
                 <input type="text" name="placeToDeliver" value="<%= info[i].placeToDeliver %>">
-                <button type="submit">confirm</button>
+                <button type="submit" id="updateButton">confirm</button>
             </form>
         <% } else { %> 
-            <!-- <section class="column__table"> -->
                 <table id="taxiTable">
                     <thead>
                         <tr>
@@ -41,7 +40,6 @@
                         </tr>
                     </tbody>
                 </table>
-            <!-- </section> -->
             <%} %>
     <% } %>
     <h2><a href="/">click</a></h2>
