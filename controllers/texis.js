@@ -32,14 +32,13 @@ module.exports = {
     },
     deleteEntry: async (req, res)=>{
         try{
-            await Texi.findOneAndDelete({
-                specialName: req.body.specialName
-            })
+            console.log(req.body)
+            await Texi.findOneAndDelete({_id:req.body.texiIdFromJSFile})
             console.log('deleted')
             res.json('success delete')
-
         }catch(error){
             console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
         }
     }
     

@@ -36,16 +36,16 @@
                 </thead>
                 <tbody>
                     <% for(let i=0; i < info.length; i++) {%>
-                        <tr>
+                        <tr data-id="<%=info[i]._id%>">
                             <td><%= info[i].specialName %></td>
                             <td><%= info[i].placeToDeliver %></td>
                             <td><%= info[i].numberPlate %></td>
                             <td><%= info[i].number %></td>
-                            <!-- Use <img> tag to display the image -->
                             <td><img src="<%= info[i].image %>" alt="Taxi Driver Image" style="max-width: 100px; max-height: 100px;"></td>
-                            <td class="edit"><a href="/edit/<%= info[i]._id%>"><i class="fa fa-edit"></i></a></td>
-                            <td class="fa fa-trash"></td>
+                            <td class="fa fa-trash" id="delete"></td>
                             <td class="fa fa-check"></td>
+                            <td class="edit"><a href="/edit/<%= info[i]._id%>"><i class="fa fa-edit"></i></a></td>
+                            
                             <!-- <td class=' fa fa-check <%= info[i].fa === true ? 'completed' : 'not'%>'></td> -->
                         </tr>
                     <% } %>
@@ -53,6 +53,6 @@
             </table>
         </section>
     </section>
-    <script text="type/javascrpt" src="/js/main.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>

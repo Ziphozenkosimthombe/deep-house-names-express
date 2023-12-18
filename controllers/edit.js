@@ -16,22 +16,22 @@ module.exports = {
             })
             const id = req.params.id
             const result = await Texi.findByIdAndUpdate(
-                id,
+                {_id: id},
                 {
-                    placeToDeliver: req.body.placeToDeliver,
-                    numberPlate: req.body.numberPlate,
-                    number: req.body.number
+                    $set:{
+                        
+                        placeToDeliver: req.body.placeToDeliver,
+                        numberPlate: req.body.numberPlate,
+                        number: req.body.number
+                    },
+                    
                 }
             )
             console.log(result)
             res.redirect("/")
-            res.json('successfully')
-
         }catch(error){
             console.error(error);
             
         }
     }
-
-
 }

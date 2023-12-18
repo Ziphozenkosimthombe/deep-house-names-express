@@ -24,6 +24,8 @@ app.use(express.json())
 */ 
 app.use('/', homeRoutes)
 app.use('/edit', editRoutes)
+
+
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })

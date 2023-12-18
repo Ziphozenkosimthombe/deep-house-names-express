@@ -1,4 +1,4 @@
-document.getElementById('updateButton').addEventListener('click', updateEntry)
+
 // const TexiComplete = document.querySelectorAll('td.fa')
 const deleteText = document.querySelectorAll('.fa-trash')
 const checkText = document.querySelectorAll('.completed')
@@ -13,46 +13,15 @@ Array.from(checkText).forEach((element)=>{
 })
 
 
-async function updateEntry(){
-    try{
-        const res = await fetch('/:id', {
-            method: 'put',
-            headers: {'content-Type': 'application/json'},
-            body: JSON.stringify({
-                specialName: document.getElementsByName("specialName")[0].value,
-                placeToDeliver: document.getElementsByName("placeToDeliver")[0].value,
-                numberPlate: document.getElementsByName("numberPlate")[0].value,
-                number: document.getElementsByName("number")[0].value,
-                // image: document.getElementsByName('image')[0].value
-            })
-        })
-        const data = await res.json()
-        console.log(data)
-        location.reload()
-
-    }catch(error){
-        console.error(error);
-    }
-}
-
-
-
 async function deleteEntry(){
-    const row = this.parentNode
-    const sName = row.children[0].innerText
-    const numPlate = row.children[1].innerText
-    const place = row.children[2].innerText
-    const number = row.children[3].innerText
+    const texiId = this.parentNode.dataset.id
 
     try{
-        const response = await fetch('index/deleteEntry', {
+        const response = await fetch('/deleteEntry', {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              'specialName': sName,
-              'numberPlate': numPlate,
-              'place': place,
-              'number': number
+                'texiIdFromJSFile': texiId
             })
           })
         const data = await response.json()
