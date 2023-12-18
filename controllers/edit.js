@@ -25,7 +25,7 @@ module.exports = {
             )
             console.log(result)
             // res.json('successfully')
-            res.render('edit.ejs', {info: result})
+            res.redirect("/")
 
         }catch(error){
             console.error(error);
