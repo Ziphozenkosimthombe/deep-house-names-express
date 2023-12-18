@@ -24,8 +24,8 @@ module.exports = {
                 }
             )
             console.log(result)
-            // res.json('successfully')
             res.redirect("/")
+            res.json('successfully')
 
         }catch(error){
             console.error(error);
