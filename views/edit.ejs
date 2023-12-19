@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+    
     <% for (let i=0; i < info.length; i++) { %>
         <% if (info[i]._id==texiId) { %>
             <form action="/edit/<%= info[i]._id %>" method="POST">
@@ -18,7 +19,7 @@
             </form>
 
 
-            <!-- <table id="taxiTable">
+            <table id="taxiTable">
                 <thead>
                     <tr>
                         <th>DriversName</th>
@@ -41,7 +42,7 @@
                         <a href="/">Cancel</a>
                     </tr>
                 </tbody>
-            </table> -->
+            </table>
         <% } else { %> 
                 <table id="taxiTable">
                     <thead>
