@@ -16,6 +16,32 @@
                 <input type="text" name="placeToDeliver" value="<%= info[i].placeToDeliver %>">
                 <button type="submit" id="updateButton">confirm</button>
             </form>
+
+
+            <!-- <table id="taxiTable">
+                <thead>
+                    <tr>
+                        <th>DriversName</th>
+                        <th>placeToDeliver</th>
+                        <th>numberPlate</th>
+                        <th>Number</th>
+                        <th>Image</th>
+                        <th>Delete & Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= info[i].specialName %></td>
+                        <td><%= info[i].placeToDeliver %></td>
+                        <td><%= info[i].numberPlate %></td>
+                        <td><%= info[i].number %></td>
+                        <td class="edit"><a href="/edit/<%= info[i]._id %>"><i class="fa fa-edit"></i></a></td>
+                        <td class="fa fa-trash"></td>
+                        <td class="fa fa-check"></td>
+                        <a href="/">Cancel</a>
+                    </tr>
+                </tbody>
+            </table> -->
         <% } else { %> 
                 <table id="taxiTable">
                     <thead>
