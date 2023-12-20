@@ -58,3 +58,8 @@ form{
 /* .fa-trash, .fa-check{
     padding-right: 
 } */
+
+.completed{
+    text-decoration: line-through;
+    color: gray;
+}

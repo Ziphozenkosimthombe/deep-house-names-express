@@ -4,7 +4,7 @@ module.exports = {
     getTexis: async (req, res) =>{
         try{
             const texiItems = await Texi.find().sort({ number: 1})
-            // const itemsLeft = await Texi.countDocuments({facheck: false})
+            const itemsLeft = await Texi.countDocuments({complited: false})
             res.render('index.ejs', {info: texiItems})//
 
         }catch(error){
@@ -19,8 +19,8 @@ module.exports = {
                 placeToDeliver: req.body.placeToDeliver,
                 numberPlate: req.body.numberPlate,
                 number: req.body.number,
-                image: req.body.image
-                // fa: false
+                image: req.body.image,
+                complited: false
             })
             console.log(result);
             console.log('post succcessfull')
@@ -40,6 +40,18 @@ module.exports = {
             console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });
         }
+    },
+    markComplete: async (req, res)=>{
+        try{
+            await Todo.findOneAndUpdate({_id:req.body.texiIdFromJSFile},{
+                completed: true
+            })
+            console.log('Marked Complete')
+            res.json('Marked Complete')
+        }catch(err){
+            console.log(err)
+        }
     }
+    
     
 }

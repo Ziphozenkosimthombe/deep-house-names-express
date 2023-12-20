@@ -8,6 +8,8 @@ router.post('/api', texisContoller.api)
 
 router.delete('/deleteEntry', texisContoller.deleteEntry)
 
+router.put('/markComplete', texisContoller.markComplete)
+
 
 
 module.exports = router
