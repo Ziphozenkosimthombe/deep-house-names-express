@@ -55,11 +55,7 @@ form{
     width: 50%;
 }
 
-/* .fa-trash, .fa-check{
-    padding-right: 
-} */
-
 .completed{
     text-decoration: line-through;
-    color: gray;
+    color: red;
 }

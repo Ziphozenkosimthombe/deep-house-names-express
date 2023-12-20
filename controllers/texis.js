@@ -5,7 +5,7 @@ module.exports = {
         try{
             const texiItems = await Texi.find().sort({ number: 1})
             const itemsLeft = await Texi.countDocuments({complited: false})
-            res.render('index.ejs', {info: texiItems})//
+            res.render('index.ejs', {info: texiItems, left: itemsLeft})//
 
         }catch(error){
             console.error();
@@ -41,17 +41,16 @@ module.exports = {
             res.status(500).json({ error: 'Internal Server Error' });
         }
     },
-    markComplete: async (req, res)=>{
+    markCompleted: async (req, res)=>{
         try{
-            await Todo.findOneAndUpdate({_id:req.body.texiIdFromJSFile},{
-                completed: true
-            })
-            console.log('Marked Complete')
-            res.json('Marked Complete')
-        }catch(err){
-            console.log(err)
+            console.log(req.body)
+            await Texi.findByIdAndUpdate({_id:req.body.texiIdFromJSFile})
+            console.log('completed')
+            res.json('successfull complete')
+        }catch(error){
+            console.error(error);
+            es.status(500).json({ error: 'Internal Server Error' });
         }
     }
-    
     
 }
