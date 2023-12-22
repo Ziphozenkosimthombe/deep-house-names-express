@@ -18,7 +18,6 @@
                 <input type="number" placeholder="number" name="number" >
                 <input type="file" name="image">
                 <button type="submit">Submit</button>
-                <!-- <button type="button" id="updateButton">UPDATE EXISTING</button> -->
             </form>
         </section>
         <section class="column__table">
@@ -54,7 +53,7 @@
                             <td class="fa fa-trash" id="delete"></td>
                             <td class="fa fa-check"></td>
                             <td class="fa fa-undo"></td>
-                            <td class="edit"><a href="/edit/<%= info[i]._id%>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="/edit/<%= info[i]._id%>"><i class="fa fa-edit"></i></a></td>
                         </tr>
                     <% } %>
                 </tbody>

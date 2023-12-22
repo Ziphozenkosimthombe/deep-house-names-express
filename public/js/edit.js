@@ -6,17 +6,14 @@ Array.from(updateText).forEach((element)=>{
 
 
 async function updateEntry(){
-    const texiId = this.parentNode.dataset.id
     try{
         const res = await fetch('/:id', {
             method: 'put',
             headers: {'content-Type': 'application/json'},
             body: JSON.stringify({
-                specialName: document.getElementsByName("specialName")[0].value,
                 placeToDeliver: document.getElementsByName("placeToDeliver")[0].value,
-                numberPlate: document.getElementsByName("numberPlate")[0].value,
                 number: document.getElementsByName("number")[0].value,
-                image: document.getElementsByName('image')[0].value
+                numberPlate: document.getElementsByName("numberPlate")[0].value,
             })
         })
         const data = await res.json()

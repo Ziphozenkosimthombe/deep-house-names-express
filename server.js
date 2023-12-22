@@ -1,5 +1,5 @@
 /*
-=========REQUIRED DEPENDECIES===========
+=========REQUIRED DEPENDECIES==========
 */
 const express = require('express')
 const app = express()

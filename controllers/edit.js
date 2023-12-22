@@ -17,6 +17,7 @@ module.exports = {
             const id = req.params.id
             const result = await Texi.findByIdAndUpdate(
                 {_id: id},
+                
                 {
                     $set:{
                         
