@@ -10,6 +10,6 @@ router.delete('/deleteEntry', texisContoller.deleteEntry)
 
 router.put('/markCompleted', texisContoller.markCompleted)
 
-
+router.put('/markUnCompleted', texisContoller.markUnCompleted)
 
 module.exports = router

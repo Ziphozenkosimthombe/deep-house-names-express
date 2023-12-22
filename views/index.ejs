@@ -23,7 +23,7 @@
         </section>
         <section class="column__table">
             <h2>Texi driver name and Number plate</h2>
-            <h2>Things left to do: <%= left %></h2>
+            <h2>Car left on the rank: <%= left %></h2>
             <table id="taxiTable">
                 <thead>
                     <tr>
@@ -39,13 +39,21 @@
                     
                     <% for(let i=0; i < info.length; i++) {%>
                         <tr class='texi__table' data-id="<%=info[i]._id%>">
-                            <td class='<%=info[i].completed === true ? 'completed' : 'not'%>'><%= info[i].specialName %></td>
-                            <td class='<%=info[i].completed === true ? 'completed' : 'not'%>'><%= info[i].placeToDeliver %></td>
-                            <td class='<%=info[i].completed === true ? 'completed' : 'not'%>'><%= info[i].numberPlate %></td>
-                            <td class='<%=info[i].completed === true ? 'completed' : 'not'%>'><%= info[i].number %></td>
+                            <% if (info[i].complete === true) {%>
+                                <td class="completed"><%= info[i].specialName %></td>
+                                <td class="completed"><%= info[i].placeToDeliver %></td>
+                                <td class="completed"><%= info[i].numberPlate %></td>
+                                <td class="completed"><%= info[i].number %></td>
+                            <%} else{%>
+                                <td><%= info[i].specialName %></td>
+                                <td><%= info[i].placeToDeliver %></td>
+                                <td><%= info[i].numberPlate %></td>
+                                <td><%= info[i].number %></td>
+                            <%}%>
                             <td><img src="<%= info[i].image %>" alt="Taxi Driver Image" style="max-width: 100px; max-height: 100px;"></td>
                             <td class="fa fa-trash" id="delete"></td>
                             <td class="fa fa-check"></td>
+                            <td class="fa fa-undo"></td>
                             <td class="edit"><a href="/edit/<%= info[i]._id%>"><i class="fa fa-edit"></i></a></td>
                         </tr>
                     <% } %>

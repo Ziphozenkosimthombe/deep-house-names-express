@@ -5,7 +5,7 @@ const TexiSchema = new mongoose.Schema({
   placeToDeliver: {type: String, required: true,},
   numberPlate: {type: String, required: true,},
   number: {type: Number, required: true,},
-  complited: {type: Boolean, required: true,}
+  complete: {type: Boolean, required: true,}
 })
 
 module.exports = mongoose.model('Texi', TexiSchema, 'tasks')

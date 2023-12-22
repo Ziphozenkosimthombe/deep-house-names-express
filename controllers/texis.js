@@ -4,7 +4,7 @@ module.exports = {
     getTexis: async (req, res) =>{
         try{
             const texiItems = await Texi.find().sort({ number: 1})
-            const itemsLeft = await Texi.countDocuments({complited: false})
+            const itemsLeft = await Texi.countDocuments({complete: false})
             res.render('index.ejs', {info: texiItems, left: itemsLeft})//
 
         }catch(error){
@@ -20,7 +20,7 @@ module.exports = {
                 numberPlate: req.body.numberPlate,
                 number: req.body.number,
                 image: req.body.image,
-                complited: false
+                complete: false
             })
             console.log(result);
             console.log('post succcessfull')
@@ -44,13 +44,35 @@ module.exports = {
     markCompleted: async (req, res)=>{
         try{
             console.log(req.body)
-            await Texi.findByIdAndUpdate({_id:req.body.texiIdFromJSFile})
-            console.log('completed')
+            
+            await Texi.findByIdAndUpdate(req.body.texiIdFromJSFile,{
+                $set: {
+                    complete: true
+                },
+            })
+            console.log('complete')
             res.json('successfull complete')
         }catch(error){
             console.error(error);
-            es.status(500).json({ error: 'Internal Server Error' });
+            res.status(500).json({ error: 'Internal Server Error' });
         }
-    }
+    },
+    markUnCompleted: async (req, res)=>{
+        try{
+            console.log(req.body)
+            
+            await Texi.findByIdAndUpdate(req.body.texiIdFromJSFile,{
+                $set: {
+                    complete: false
+                },
+            })
+            console.log('uncomplete')
+            res.json('successfull complete')
+        }catch(error){
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    },
+    
     
 }
