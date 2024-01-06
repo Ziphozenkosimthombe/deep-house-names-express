@@ -3,6 +3,7 @@ const deleteText = document.querySelectorAll('.fa-trash')
 const checkIcon = document.querySelectorAll('.fa-check');
 const unCheckIcon = document.querySelectorAll('.fa-undo');
 
+
 Array.from(checkIcon).forEach((element) => {
     element.addEventListener('click', markCompleted);
 });
@@ -16,8 +17,6 @@ Array.from(unCheckIcon).forEach((element) => {
 Array.from(deleteText).forEach((element)=>{
     element.addEventListener('click', deleteEntry)
 })
-
-
 
 async function deleteEntry(){
     const texiId = this.parentNode.dataset.id

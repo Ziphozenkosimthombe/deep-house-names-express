@@ -5,7 +5,7 @@ module.exports = {
         try{
             const texiItems = await Texi.find().sort({ number: 1})
             const itemsLeft = await Texi.countDocuments({complete: false})
-            res.render('index.ejs', {info: texiItems, left: itemsLeft})//
+            res.render('index.ejs', {info: texiItems, left: itemsLeft})
 
         }catch(error){
             console.error();
@@ -73,6 +73,7 @@ module.exports = {
             res.status(500).json({ error: 'Internal Server Error' });
         }
     },
+    
     
     
 }
